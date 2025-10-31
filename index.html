@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dachshund Name Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brown: #8B4513;
+            --light-brown: #D2691E;
+            --cream: #FFF8DC;
+            --green: #228B22;
+        }
+        * { box-sizing: border-box; margin:0; padding:0; }
+        body {
+            font-family: 'Fredoka One', cursive;
+            background: linear-gradient(to bottom, var(--cream), #f9e4b7);
+            color: var(--brown);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--brown);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 0.5rem;
+            animation: wag 2s infinite alternate;
+        }
+        h1 { font-size: 2.5rem; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .generator {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        /* Bone Button */
+        #boneBtn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: transform 0.2s ease;
+            outline: none;
+        }
+        #boneBtn img {
+            width: 180px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        #boneBtn:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+        #boneBtn:active img {
+            transform: scale(0.95);
+        }
+        #result {
+            margin-top: 2rem;
+            font-size: 2.3rem;
+            color: var(--green);
+            min-height: 3rem;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 3rem;
+        }
+        @keyframes wag {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.svgrepo.com/download/55670/dachshund.svg" alt="Dachshund icon">
+        <h1>Dachshund Name Generator</h1>
+        <p>Click the bone to fetch a fresh wiener-name!</p>
+    </header>
+
+    <div class="container">
+        <section class="generator">
+            <p>Ready for a name? Click below!</p>
+            <button id="boneBtn">
+                <img src="https://freesvg.org/img/dogbone.png" alt="Dog Bone">
+            </button>
+            <div id="result">Your name will appear here!</div>
+        </section>
+    </div>
+
+    <footer>
+        Made with love for Dachshund lovers
+    </footer>
+
+    <!-- Bark Sound -->
+    <audio id="barkSound" preload="auto">
+        <source src="https://www.soundjay.com/dog/sounds/dog-bark-1.mp3" type="audio/mpeg">
+        <source src="https://www.soundjay.com/dog/sounds/dog-bark-1.ogg" type="audio/ogg">
+        Your browser does not support audio.
+    </audio>
+
+    <script>
+        // 120+ Dachshund names
+        const dachshundNames = [
+            "Frank","Wiener","Sausage","Pretzel","Biscuit","Pickles","Bratwurst",
+            "Oscar","Mayer","Schnitzel","Waffle","Strudel","Pumpernickel","Muffin",
+            "Cinnamon","Brownie","Mocha","Latte","Espresso","Coco","Toffee","Caramel",
+            "Nugget","Tater","Bagel","Donut","Cupcake","Sprinkle","Pudding","Jellybean",
+            "Gumbo","Chili","Taco","Burrito","Nachos","Frito","Cheeto","Dorito",
+            "Ramen","Soba","Udon","Pho","Kimchi","Sushi","Wasabi","Miso",
+            "Heidi","Hans","Greta","Fritz","Liesel","Bruno","Kaiser","Gretl",
+            "Rudy","Otto","Klaus","Lotte","Wolfgang","Schroeder","Bauer","Schultz",
+            "Einstein","Beethoven","Mozart","Bach","Brahms","Wagner","Goethe","Schiller",
+            "Dash","Slinky","Noodle","Wiggle","Squirt","Pogo","Zippy","Bouncy",
+            "Twix","Skittles","Pepper","Cheddar","Gouda","Brie","Feta","Ricotta",
+            "Bubbles","Sprout","Pebble","Button","Bean","Pippin","Cricket","Doodle",
+            "Waldorf","Slinky Dog","Hot Dog","Chico","Bingo","Rolo","Toby","Milo",
+            "Archie","Buddy","Charlie","Max","Rocky","Duke","Bear","Scout",
+            "Sir Barksalot","Lady Waggington","Professor Paws","Captain Sniff","Count Barkula",
+            "Wienerzilla","Dachshundini","Sausage Link","Frankfurter","Lil' Smokey",
+            "Mini Cooper","Longfellow","Stretch","Lowrider","Weenie","Hotlink","Kielbasa"
+        ];
+
+        const resultEl = document.getElementById('result');
+        const boneBtn = document.getElementById('boneBtn');
+        const bark = document.getElementById('barkSound');
+
+        function generateName() {
+            const randomIdx = Math.floor(Math.random() * dachshundNames.length);
+            resultEl.textContent = dachshundNames[randomIdx];
+
+            // Bark!
+            bark.currentTime = 0;
+            bark.play().catch(() => {});
+        }
+
+        boneBtn.addEventListener('click', generateName);
+
+        // Unlock audio on first interaction (mobile)
+        document.body.addEventListener('click', function unlock() {
+            bark.play().then(() => bark.pause()).catch(() => {});
+            document.body.removeEventListener('click', unlock);
+        }, { once: true });
+    </script>
+</body>
+</html>
