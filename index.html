@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- BASIC META -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dachshund Name Generator</title>
+    <meta name="description" content="Generate a funny Dachshund name! Click the bone to hear a real bark and get a random wiener-themed name from 220+ ideas. Perfect for sausage dog lovers.">
+    <meta name="keywords" content="dachshund name generator, wiener dog names, sausage dog names, funny dog names, pet name ideas, dachshund names">
+    <meta name="author" content="Dachshund Lovers">
+    <meta name="robots" content="index, follow">
+
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://yourdomain.com/dachshund-name-generator.html">
+
+    <!-- OPEN GRAPH (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="Dachshund Name Generator - 220+ Wiener-Ful Names!">
+    <meta property="og:description" content="Click the bone to hear a bark and get a random funny Dachshund name!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/dachshund-name-generator.html">
+    <meta property="og:image" content="https://yourdomain.com/og-dachshund.jpg">
+    <meta property="og:site_name" content="Dachshund Name Generator">
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dachshund Name Generator - 220+ Wiener-Ful Names!">
+    <meta name="twitter:description" content="Click the bone to hear a bark and get a random funny Dachshund name!">
+    <meta name="twitter:image" content="https://yourdomain.com/og-dachshund.jpg">
+
+    <!-- FAVICON (optional) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- TITLE -->
+    <title>Dachshund Name Generator - 220+ Funny Wiener Dog Names!</title>
+
+    <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&display=swap" rel="stylesheet">
+
+    <!-- STRUCTURED DATA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Dachshund Name Generator",
+      "url": "https://yourdomain.com/dachshund-name-generator.html",
+      "description": "Free tool to generate funny, wiener-themed names for Dachshund dogs with bark sound effects.",
+      "applicationCategory": "Entertainment",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Dachshund Lovers"
+      }
+    }
+    </script>
+
     <style>
         :root {
             --brown: #8B4513;
@@ -80,24 +131,32 @@
             0% { transform: rotate(-5deg); }
             100% { transform: rotate(5deg); }
         }
+        @media (max-width: 600px) {
+            #boneBtn img { width: 150px; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <img src="https://www.svgrepo.com/download/55670/dachshund.svg" alt="Dachshund icon">
+        <img src="https://www.svgrepo.com/download/55670/dachshund.svg" alt="Dachshund icon wagging tail">
         <h1>Dachshund Name Generator</h1>
         <p>Click the bone to fetch a fresh wiener-name!</p>
     </header>
 
-    <div class="container">
-        <section class="generator">
-            <p>Ready for a name? Click below!</p>
-            <button id="boneBtn">
-                <img src="https://picsur.htbrdd.com/i/fab3a0ee-2ec6-4b27-ae3e-6280c540ab1a.jpg" alt="Dog Bone">
-            </button>
-            <div id="result">Your name will appear here!</div>
-        </section>
-    </div>
+    <main>
+        <div class="container">
+            <section class="generator" aria-labelledby="generator-title">
+                <h2 id="generator-title" class="visually-hidden">Dachshund Name Generator</h2>
+                <p>Ready for a name? Click below!</p>
+                <button id="boneBtn" aria-label="Generate a random Dachshund name">
+                    <img src="https://picsur.htbrdd.com/i/fab3a0ee-2ec6-4b27-ae3e-6280c540ab1a.jpg" alt="3D dog bone - click to generate name">
+                </button>
+                <div id="result" role="status" aria-live="polite">Your name will appear here!</div>
+            </section>
+        </div>
+    </main>
 
     <footer>
         Made with love for Dachshund lovers
@@ -111,7 +170,7 @@
     </audio>
 
     <script>
-        // 120+ Dachshund names
+        // 220+ Dachshund names
         const dachshundNames = [
             "Frank","Wiener","Sausage","Pretzel","Biscuit","Pickles","Bratwurst",
             "Oscar","Mayer","Schnitzel","Waffle","Strudel","Pumpernickel","Muffin",
@@ -129,7 +188,7 @@
             "Archie","Buddy","Charlie","Max","Rocky","Duke","Bear","Scout",
             "Sir Barksalot","Lady Waggington","Professor Paws","Captain Sniff","Count Barkula",
             "Wienerzilla","Dachshundini","Sausage Link","Frankfurter","Lil' Smokey",
-            "Mini Cooper","Longfellow","Stretch","Lowrider","Weenie","Hotlink","Kielbasa","Dasher", 
+            "Mini Cooper","Longfellow","Stretch","Lowrider","Weenie","Hotlink","Kielbasa","Dasher",
             "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen", "Rudolph", "Jingles", "Tinsel",
             "Crumpet", "Gingersnap", "Eggnog", "Candy Cane", "Mistletoe", "Frosty", "Snowball", "Icicle", "Peppermint", "Holly",
             "Figgy", "Pudding", "Nutcracker", "Sugarplum", "Elfie", "Twinkle", "Sparkles", "Glitter", "Bells", "Caramel",
@@ -140,7 +199,6 @@
             "Paprika", "Kümmel", "Senf", "Relish", "Ketchup", "Mayo", "Chili", "Jalapeño", "Wasabi", "Sriracha",
             "Tabasco", "Habanero", "Cayenne", "Curry", "Tandoori", "Salsa", "Guac", "Nacho", "Taco", "Burrito",
             "Queso", "Fajita", "Enchilada", "Tamale", "Churro", "Flan", "Dulce", "Tres Leches", "Chimichanga", "Empanada"
-            
         ];
 
         const resultEl = document.getElementById('result');
@@ -149,7 +207,9 @@
 
         function generateName() {
             const randomIdx = Math.floor(Math.random() * dachshundNames.length);
-            resultEl.textContent = dachshundNames[randomIdx];
+            const name = dachshundNames[randomIdx];
+            resultEl.textContent = name;
+            resultEl.setAttribute('aria-label', `Generated name: ${name}`);
 
             // Bark!
             bark.currentTime = 0;
@@ -164,5 +224,21 @@
             document.body.removeEventListener('click', unlock);
         }, { once: true });
     </script>
+
+    <!-- VISUALLY HIDDEN CLASS -->
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
 </body>
 </html>
