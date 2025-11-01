@@ -1,244 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- BASIC META -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate a funny Dachshund name! Click the bone to hear a real bark and get a random wiener-themed name from 220+ ideas. Perfect for sausage dog lovers.">
-    <meta name="keywords" content="dachshund name generator, wiener dog names, sausage dog names, funny dog names, pet name ideas, dachshund names">
-    <meta name="author" content="Dachshund Lovers">
-    <meta name="robots" content="index, follow">
-
-    <!-- CANONICAL -->
-    <link rel="canonical" href="https://yourdomain.com/dachshund-name-generator.html">
-
-    <!-- OPEN GRAPH (Facebook, LinkedIn, etc.) -->
-    <meta property="og:title" content="Dachshund Name Generator - 220+ Wiener-Ful Names!">
-    <meta property="og:description" content="Click the bone to hear a bark and get a random funny Dachshund name!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/dachshund-name-generator.html">
-    <meta property="og:image" content="https://yourdomain.com/og-dachshund.jpg">
-    <meta property="og:site_name" content="Dachshund Name Generator">
-
-    <!-- TWITTER -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dachshund Name Generator - 220+ Wiener-Ful Names!">
-    <meta name="twitter:description" content="Click the bone to hear a bark and get a random funny Dachshund name!">
-    <meta name="twitter:image" content="https://yourdomain.com/og-dachshund.jpg">
-
-    <!-- FAVICON (optional) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- TITLE -->
-    <title>Dachshund Name Generator - 220+ Funny Wiener Dog Names!</title>
-
-    <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&display=swap" rel="stylesheet">
-
-    <!-- STRUCTURED DATA (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Dachshund Name Generator",
-      "url": "https://yourdomain.com/dachshund-name-generator.html",
-      "description": "Free tool to generate funny, wiener-themed names for Dachshund dogs with bark sound effects.",
-      "applicationCategory": "Entertainment",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "Dachshund Lovers"
-      }
-    }
-    </script>
-
-    <style>
-        :root {
-            --brown: #8B4513;
-            --light-brown: #D2691E;
-            --cream: #FFF8DC;
-            --green: #228B22;
-        }
-        * { box-sizing: border-box; margin:0; padding:0; }
-        body {
-            font-family: 'Fredoka One', cursive;
-            background: linear-gradient(to bottom, var(--cream), #f9e4b7);
-            color: var(--brown);
-            line-height: 1.6;
-        }
-        header {
-            background: var(--brown);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        header img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 0.5rem;
-            animation: wag 2s infinite alternate;
-        }
-        h1 { font-size: 2.5rem; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .generator {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        /* Bone Button */
-        #boneBtn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: transform 0.2s ease;
-            outline: none;
-        }
-        #boneBtn img {
-            width: 180px;
-            height: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-        #boneBtn:hover img {
-            transform: scale(1.1) rotate(5deg);
-        }
-        #boneBtn:active img {
-            transform: scale(0.95);
-        }
-        #result {
-            margin-top: 2rem;
-            font-size: 2.3rem;
-            color: var(--green);
-            min-height: 3rem;
-            font-weight: bold;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 3rem;
-        }
-        @keyframes wag {
-            0% { transform: rotate(-5deg); }
-            100% { transform: rotate(5deg); }
-        }
-        @media (max-width: 600px) {
-            #boneBtn img { width: 150px; }
-            h1 { font-size: 2rem; }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dashing Dachshund — Name Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF5E6;
+  --accent:#E67E22;
+  --dark:#5A3825;
+  --card:#fff7f1;
+  --muted:rgba(90,56,37,0.7);
+  --shadow: 0 10px 30px rgba(90,56,37,0.08);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Nunito, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color:var(--dark);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+}
+/* Paw print pattern */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image: radial-gradient(circle at 20px 20px, rgba(90,56,37,0.06) 10%, transparent 11%),
+                    radial-gradient(circle at 80px 60px, rgba(90,56,37,0.04) 10%, transparent 11%),
+                    radial-gradient(circle at 140px 20px, rgba(90,56,37,0.05) 10%, transparent 11%),
+                    radial-gradient(circle at 220px 70px, rgba(90,56,37,0.03) 10%, transparent 11%);
+  pointer-events:none;
+  opacity:0.95;
+  mix-blend-mode: multiply;
+  z-index:0;
+}
+.wrap{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:980px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,251,248,0.95));
+  border-radius:20px;
+  padding:22px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+header{
+  display:flex;
+  gap:16px;
+  align-items:center;
+}
+.logo{
+  width:92px;
+  height:92px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  flex:0 0 92px;
+  background: linear-gradient(180deg, var(--accent), #d98b57);
+}
+.logo img{width:72px;height:72px;}
+h1{margin:0;font-family: Pacifico, cursive;color:var(--dark);font-size:26px;}
+p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+.main{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:16px;align-items:start;}
+@media (max-width:920px){ .main{grid-template-columns:1fr} .logo{width:72px;height:72px} }
+.card{background:var(--card);border-radius:14px;padding:16px;box-shadow: 0 8px 24px rgba(90,56,37,0.04);border: 1px solid rgba(90,56,37,0.04);}
+.controls{display:flex;gap:10px;align-items:center}
+.btn{padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:700;font-size:14px;box-shadow: 0 6px 18px rgba(90,56,37,0.06);}
+.btn.generate{background:var(--accent); color:white}
+.btn.copy{background:transparent; border:1px solid rgba(90,56,37,0.08); color:var(--dark)}
+.btn.ghost{background:transparent;border:1px dashed rgba(90,56,37,0.06)}
+.name-card{
+  margin-top:14px;
+  padding:18px;
+  border-radius:12px;
+  font-size:20px;
+  font-weight:800;
+  color:var(--dark);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: linear-gradient(180deg, rgba(255,250,246,0.9), rgba(255,247,242,0.95));
+  border:1px solid rgba(90,56,37,0.03);
+  cursor:pointer;
+}
+.muted{color:var(--muted); font-size:13px}
+.recent-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.recent-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,250,244,0.6));border:1px solid rgba(90,56,37,0.03)}
+.small{font-size:13px}
+footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:13px}
+</style>
 </head>
 <body>
-
-    <header>
-        <img src="https://www.svgrepo.com/download/55670/dachshund.svg" alt="Dachshund icon wagging tail">
-        <h1>Dachshund Name Generator</h1>
-        <p>Click the bone to fetch a fresh wiener-name!</p>
-    </header>
-
-    <main>
-        <div class="container">
-            <section class="generator" aria-labelledby="generator-title">
-                <h2 id="generator-title" class="visually-hidden">Dachshund Name Generator</h2>
-                <p>Ready for a name? Click below!</p>
-                <button id="boneBtn" aria-label="Generate a random Dachshund name">
-                    <img src="https://picsur.htbrdd.com/i/fab3a0ee-2ec6-4b27-ae3e-6280c540ab1a.jpg" alt="3D dog bone - click to generate name">
-                </button>
-                <div id="result" role="status" aria-live="polite">Your name will appear here!</div>
-            </section>
-        </div>
-    </main>
-
-    <footer>
-        Made with love for Dachshund lovers
-    </footer>
-
-    <!-- Bark Sound -->
-    <audio id="barkSound" preload="auto">
-        <source src="https://www.soundjay.com/dog/sounds/dog-bark-1.mp3" type="audio/mpeg">
-        <source src="https://www.soundjay.com/dog/sounds/dog-bark-1.ogg" type="audio/ogg">
-        Your browser does not support audio.
-    </audio>
-
-    <script>
-        // 220+ Dachshund names
-        const dachshundNames = [
-            "Frank","Wiener","Sausage","Pretzel","Biscuit","Pickles","Bratwurst",
-            "Oscar","Mayer","Schnitzel","Waffle","Strudel","Pumpernickel","Muffin",
-            "Cinnamon","Brownie","Mocha","Latte","Espresso","Coco","Toffee","Caramel",
-            "Nugget","Tater","Bagel","Donut","Cupcake","Sprinkle","Pudding","Jellybean",
-            "Gumbo","Chili","Taco","Burrito","Nachos","Frito","Cheeto","Dorito",
-            "Ramen","Soba","Udon","Pho","Kimchi","Sushi","Wasabi","Miso",
-            "Heidi","Hans","Greta","Fritz","Liesel","Bruno","Kaiser","Gretl",
-            "Rudy","Otto","Klaus","Lotte","Wolfgang","Schroeder","Bauer","Schultz",
-            "Einstein","Beethoven","Mozart","Bach","Brahms","Wagner","Goethe","Schiller",
-            "Dash","Slinky","Noodle","Wiggle","Squirt","Pogo","Zippy","Bouncy",
-            "Twix","Skittles","Pepper","Cheddar","Gouda","Brie","Feta","Ricotta",
-            "Bubbles","Sprout","Pebble","Button","Bean","Pippin","Cricket","Doodle",
-            "Waldorf","Slinky Dog","Hot Dog","Chico","Bingo","Rolo","Toby","Milo",
-            "Archie","Buddy","Charlie","Max","Rocky","Duke","Bear","Scout",
-            "Sir Barksalot","Lady Waggington","Professor Paws","Captain Sniff","Count Barkula",
-            "Wienerzilla","Dachshundini","Sausage Link","Frankfurter","Lil' Smokey",
-            "Mini Cooper","Longfellow","Stretch","Lowrider","Weenie","Hotlink","Kielbasa","Dasher",
-            "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen", "Rudolph", "Jingles", "Tinsel",
-            "Crumpet", "Gingersnap", "Eggnog", "Candy Cane", "Mistletoe", "Frosty", "Snowball", "Icicle", "Peppermint", "Holly",
-            "Figgy", "Pudding", "Nutcracker", "Sugarplum", "Elfie", "Twinkle", "Sparkles", "Glitter", "Bells", "Caramel",
-            "Latte", "Espresso", "Mochi", "S'mores", "Tiramisu", "Pancake", "Donut", "Cupcake", "Sprinkle", "Fudge",
-            "Truffle", "Brownie", "Cookie", "Macaron", "Eclair", "Strudel", "Berliner", "Apfel", "Krapfen", "Lebkuchen",
-            "Bretzel", "Sauerbraten", "Rouladen", "Spaetzle", "Kartoffel", "Pumpernickel", "Rye", "Marzipan", "Stollen", "Glühwein",
-            "Schokolade", "Vanille", "Zimt", "Nuss", "Mandeln", "Honig", "Karamell", "Sahne", "Pfeffer", "Salz",
-            "Paprika", "Kümmel", "Senf", "Relish", "Ketchup", "Mayo", "Chili", "Jalapeño", "Wasabi", "Sriracha",
-            "Tabasco", "Habanero", "Cayenne", "Curry", "Tandoori", "Salsa", "Guac", "Nacho", "Taco", "Burrito",
-            "Queso", "Fajita", "Enchilada", "Tamale", "Churro", "Flan", "Dulce", "Tres Leches", "Chimichanga", "Empanada"
-        ];
-
-        const resultEl = document.getElementById('result');
-        const boneBtn = document.getElementById('boneBtn');
-        const bark = document.getElementById('barkSound');
-
-        function generateName() {
-            const randomIdx = Math.floor(Math.random() * dachshundNames.length);
-            const name = dachshundNames[randomIdx];
-            resultEl.textContent = name;
-            resultEl.setAttribute('aria-label', `Generated name: ${name}`);
-
-            // Bark!
-            bark.currentTime = 0;
-            bark.play().catch(() => {});
-        }
-
-        boneBtn.addEventListener('click', generateName);
-
-        // Unlock audio on first interaction (mobile)
-        document.body.addEventListener('click', function unlock() {
-            bark.play().then(() => bark.pause()).catch(() => {});
-            document.body.removeEventListener('click', unlock);
-        }, { once: true });
-    </script>
-
-    <!-- VISUALLY HIDDEN CLASS -->
-    <style>
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
-
+<div class="wrap">
+<header>
+<div class="logo" aria-hidden="true">
+<!-- Logo image: Cute dachshund illustration facing right -->
+<!-- Source: FreeSVG.org – Public Domain -->
+<!-- URL: https://freesvg.org/1550271384.svg -->
+<img src="scubadog.svg" alt="Cute dachshund illustration"/>
+</div>
+<div>
+<h1>Dashing Dachshund — Name Generator</h1>
+<p class="lead">Playful, cartoonish, brown & orange theme. Generate a name, copy it, and keep your last 7 picks.</p>
+</div>
+</header>
+<div class="main">
+<section class="card">
+<h2 class="small" style="margin:0;font-weight:800">Generate a name</h2>
+<div class="controls" style="margin-top:12px">
+<button id="generateBtn" class="btn generate">Generate Name</button>
+<button id="copyBtn" class="btn copy">Copy</button>
+</div>
+<div id="nameCard" class="name-card" tabindex="0" aria-live="polite" style="margin-top:14px;">
+<span id="nameText">Press Generate</span>
+</div>
+</section>
+<aside class="card">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<strong>Recent picks</strong>
+<div class="muted" id="recentCount">0</div>
+</div>
+<div id="recent" class="recent-list" aria-live="polite" aria-atomic="true">
+<div class="muted">No recent picks — generate one!</div>
+</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<button id="clearRecent" class="btn copy">Clear</button>
+</div>
+</aside>
+</div>
+<footer>
+<div class="muted">© <span id="year"></span> Dashing Dachshund</div>
+<div class="muted">Made with ❤️, JavaScript & localStorage</div>
+</footer>
+<script>
+const names = ["Pretzel","Noodle","Sausage","Wiggles","Fritz","Gretel","Oscar","Bella","Lady Wigglebottom","Duchess","Baron","Hans","Greta","Milo","Lola","Kaiser","Bratwurst","Pip","Schnitzel","Bark Twain","Pickles","Snickers","Dapper","Poppy","Mabel","Rex","Otto","Heidi","Liesl","Penny","Frankie","Max","Lucy","Charlie","Winston","Daisy","Maggie","Ziggy","Nixon","Bean","Biscuit","Bruno","Coco","Fable","Gizmo","Hazel","Ike","Juno","Kiki","Lenny","Mochi","Nico","Olive","Peanut","Queenie","Rufus","Sable","Toby","Uma","Violet","Walter","Xena","Yoshi","Zelda","Churro","Maple","Sparky","Button","Clover","Dobby","Elvis","Fiona","Gus","Hector","Ivan","Jasper","Koda","Leia","Mira","Nova","Ollie","Poppyseed","Quincy","Ranger","Sarge","Tango","Ulysses","Vera","Whiskey","Xander","Yara","Zeppelin","Alfie","Bubbles","Chewie","Drogo","Echo","Felix","Ginger","Hugo","Indie","Juniper","Kelp","Lulu","Miso","Nori","Orzo","Pico","Rexie","Sableton","Tilly","Uno","Vito","Waffle","Xavi","Yogi","Zuzu","Arlo","Benny","Cinnamon","Dottie","Eddie","Freja","Gatsby","Harper","Isla","Jax","Kiki Mae","Lottie","Monty","Nell","Opal","Percy","Quilla","Rosie","Simba","Truffle","Umi","Vesper"];
+let recent = JSON.parse(localStorage.getItem("recentNames")||"[]");
+const nameText=document.getElementById("nameText");
+const nameCard=document.getElementById("nameCard");
+const recentEl=document.getElementById("recent");
+const recentCount=document.getElementById("recentCount");
+const generateBtn=document.getElementById("generateBtn");
+const copyBtn=document.getElementById("copyBtn");
+const clearBtn=document.getElementById("clearRecent");
+function updateRecentDisplay(){
+  recentEl.innerHTML="";
+  if(recent.length===0){recentEl.innerHTML='<div class="muted">No recent picks — generate one!</div>'}
+  recent.forEach(n=>{
+    const div=document.createElement("div");
+    div.className="recent-item";
+    div.textContent=n;
+    recentEl.appendChild(div);
+  });
+  recentCount.textContent=recent.length;
+}
+function addRecent(name){
+  recent.unshift(name);
+  if(recent.length>7)recent.pop();
+  localStorage.setItem("recentNames",JSON.stringify(recent));
+  updateRecentDisplay();
+}
+function generateName(){
+  const idx=Math.floor(Math.random()*names.length);
+  const name=names[idx];
+  nameText.textContent=name;
+  addRecent(name);
+}
+generateBtn.addEventListener("click",generateName);
+copyBtn.addEventListener("click",()=>{navigator.clipboard.writeText(nameText.textContent)});
+clearBtn.addEventListener("click",()=>{recent=[];localStorage.setItem("recentNames","[]");updateRecentDisplay()});
+updateRecentDisplay();
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
