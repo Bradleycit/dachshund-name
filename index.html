@@ -4,8 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Dashing Dachshund — Name Generator</title>
-<meta name="description" content="Playful dachshund name generator with cute illustration, brown & orange theme, paw-print background, copy and recent picks." />
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<meta name="description" content="Playful dachshund name generator, copy and recent picks." />
+<!-- Nunito for body, Fredoka for title -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FFF5E6;
@@ -69,7 +70,13 @@ header{
   background: linear-gradient(180deg, var(--accent), #d98b57);
 }
 .logo img{width:72px;height:72px;object-fit:contain;}
-h1{margin:0;font-family: Pacifico, cursive;color:var(--dark);font-size:26px;}
+h1{
+  margin:0;
+  font-family: "Fredoka", sans-serif;
+  color:var(--dark);
+  font-size:28px;
+  letter-spacing:0.5px;
+}
 p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
 .main{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:16px;align-items:start;}
 @media (max-width:920px){ .main{grid-template-columns:1fr} .logo{width:72px;height:72px} }
@@ -141,7 +148,7 @@ footer{display:flex;justify-content:space-between;align-items:center;margin-top:
 
     <div>
       <h1>Dashing Dachshund — Name Generator</h1>
-      <p class="lead">Playful, cartoonish, brown & orange theme. Generate a name, copy it, and keep your last 7 picks.</p>
+      <p class="lead">Generate a name, copy it, and keep your last 7 picks.</p>
     </div>
   </header>
 
