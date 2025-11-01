@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Dashing Dachshund — Name Generator</title>
+<meta name="description" content="Playful dachshund name generator with cute illustration, brown & orange theme, paw-print background, copy and recent picks." />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -45,7 +46,7 @@ body::before{
   z-index:1;
   width:100%;
   max-width:980px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,251,248,0.95));
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,248,0.98));
   border-radius:20px;
   padding:22px;
   box-shadow: var(--shadow);
@@ -67,7 +68,7 @@ header{
   flex:0 0 92px;
   background: linear-gradient(180deg, var(--accent), #d98b57);
 }
-.logo img{width:72px;height:72px;}
+.logo img{width:72px;height:72px;object-fit:contain;}
 h1{margin:0;font-family: Pacifico, cursive;color:var(--dark);font-size:26px;}
 p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
 .main{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:16px;align-items:start;}
@@ -97,88 +98,122 @@ p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
 .recent-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,250,244,0.6));border:1px solid rgba(90,56,37,0.03)}
 .small{font-size:13px}
 footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:13px}
+
+/* Sticky QR placeholder (medium ~120x120) */
+.qr-sticky{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:120px;
+  height:120px;
+  background:white;
+  border:4px dashed rgba(90,56,37,0.15);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  box-shadow: 0 10px 30px rgba(90,56,37,0.12);
+  z-index:9999;
+  transition:transform .18s ease,opacity .18s ease;
+}
+.qr-sticky:hover{transform:translateY(-6px)}
+.qr-label{font-size:12px;color:var(--muted);margin-top:6px}
+@media (max-width:520px){
+  .qr-sticky{width:88px;height:88px;right:12px;bottom:12px}
+  .qr-label{font-size:11px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-<div class="logo" aria-hidden="true">
-<!-- Logo image: Cute dachshund illustration facing right -->
-<!-- Source: FreeSVG.org – Public Domain -->
-<!-- URL: https://freesvg.org/1550271384.svg -->
-<img src="scubadog.svg" alt="Cute dachshund illustration"/>
+<div class="wrap" id="app">
+  <header>
+    <div class="logo" aria-hidden="true">
+      <!--
+        Logo image: Cute dachshund illustration facing right
+        Source: FreeSVG.org – Public Domain
+        URL: https://freesvg.org/1550271384.svg
+        Note: some hosts block hotlinking; for 100% reliability, download that SVG
+        and place it next to this HTML as "dachshund.svg", then use src="dachshund.svg".
+      -->
+      <img src="scubadog.svg" alt="Cute dachshund illustration" id="logoImg"/>
+    </div>
+
+    <div>
+      <h1>Dashing Dachshund — Name Generator</h1>
+      <p class="lead">Playful, cartoonish, brown & orange theme. Generate a name, copy it, and keep your last 7 picks.</p>
+    </div>
+  </header>
+
+  <div class="main" role="main">
+    <section class="card">
+      <h2 class="small" style="margin:0;font-weight:800">Generate a name</h2>
+      <div class="controls" style="margin-top:12px">
+        <button id="generateBtn" class="btn generate">Generate Name</button>
+        <button id="surpriseBtn" class="btn copy">Surprise</button>
+        <button id="shuffleBtn" class="btn ghost">Shuffle</button>
+      </div>
+
+      <div id="resultCard" class="name-card" tabindex="0">
+        <div id="nameText">Press Generate</div>
+        <button id="copyBtn" class="btn copy">Copy</button>
+      </div>
+      <div class="muted" style="margin-top:10px;">Click the name or Copy to copy. Recent picks save locally (last 7).</div>
+    </section>
+
+    <aside class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Recent picks</strong>
+        <span class="muted" id="recentCount">0</span>
+      </div>
+      <div id="recent" class="recent-list"><div class="muted">No recent picks — generate one!</div></div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button id="clearRecent" class="btn copy">Clear</button>
+        <button id="exportRecent" class="btn generate">Export JSON</button>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <span class="muted">© <span id="year"></span> Dashing Dachshund</span>
+    <span class="muted">Made with ❤️, JS & localStorage</span>
+  </footer>
 </div>
-<div>
-<h1>Dashing Dachshund — Name Generator</h1>
-<p class="lead">Playful, cartoonish, brown & orange theme. Generate a name, copy it, and keep your last 7 picks.</p>
+
+<!-- Sticky QR Placeholder -->
+<div class="qr-sticky" id="qrPlaceholder" role="img" aria-label="QR Code placeholder">
+  <!-- Replace below with your actual QR code image later:
+       <img src="qr.png" alt="QR Code for Dashing Dachshund" style="width:100%;height:100%;object-fit:contain;" /> -->
+  <div style="width:64px;height:64px;background:linear-gradient(180deg,#f6f0ea,#fff);border-radius:6px;display:flex;align-items:center;justify-content:center;">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="6" height="6" rx="1" fill="#5A3825"/>
+      <rect x="1" y="9" width="6" height="6" rx="1" fill="#5A3825"/>
+      <rect x="9" y="1" width="6" height="6" rx="1" fill="#5A3825"/>
+      <rect x="14" y="14" width="2" height="2" fill="#5A3825"/>
+      <rect x="18" y="14" width="2" height="2" fill="#5A3825"/>
+      <rect x="14" y="18" width="2" height="2" fill="#5A3825"/>
+    </svg>
+  </div>
+  <div class="qr-label">QR Code Here</div>
 </div>
-</header>
-<div class="main">
-<section class="card">
-<h2 class="small" style="margin:0;font-weight:800">Generate a name</h2>
-<div class="controls" style="margin-top:12px">
-<button id="generateBtn" class="btn generate">Generate Name</button>
-<button id="copyBtn" class="btn copy">Copy</button>
-</div>
-<div id="nameCard" class="name-card" tabindex="0" aria-live="polite" style="margin-top:14px;">
-<span id="nameText">Press Generate</span>
-</div>
-</section>
-<aside class="card">
-<div style="display:flex;justify-content:space-between;align-items:center">
-<strong>Recent picks</strong>
-<div class="muted" id="recentCount">0</div>
-</div>
-<div id="recent" class="recent-list" aria-live="polite" aria-atomic="true">
-<div class="muted">No recent picks — generate one!</div>
-</div>
-<div style="display:flex;gap:8px;margin-top:12px">
-<button id="clearRecent" class="btn copy">Clear</button>
-</div>
-</aside>
-</div>
-<footer>
-<div class="muted">© <span id="year"></span> Dashing Dachshund</div>
-<div class="muted">Made with ❤️, JavaScript & localStorage</div>
-</footer>
+
 <script>
-const names = ["Pretzel","Noodle","Sausage","Wiggles","Fritz","Gretel","Oscar","Bella","Lady Wigglebottom","Duchess","Baron","Hans","Greta","Milo","Lola","Kaiser","Bratwurst","Pip","Schnitzel","Bark Twain","Pickles","Snickers","Dapper","Poppy","Mabel","Rex","Otto","Heidi","Liesl","Penny","Frankie","Max","Lucy","Charlie","Winston","Daisy","Maggie","Ziggy","Nixon","Bean","Biscuit","Bruno","Coco","Fable","Gizmo","Hazel","Ike","Juno","Kiki","Lenny","Mochi","Nico","Olive","Peanut","Queenie","Rufus","Sable","Toby","Uma","Violet","Walter","Xena","Yoshi","Zelda","Churro","Maple","Sparky","Button","Clover","Dobby","Elvis","Fiona","Gus","Hector","Ivan","Jasper","Koda","Leia","Mira","Nova","Ollie","Poppyseed","Quincy","Ranger","Sarge","Tango","Ulysses","Vera","Whiskey","Xander","Yara","Zeppelin","Alfie","Bubbles","Chewie","Drogo","Echo","Felix","Ginger","Hugo","Indie","Juniper","Kelp","Lulu","Miso","Nori","Orzo","Pico","Rexie","Sableton","Tilly","Uno","Vito","Waffle","Xavi","Yogi","Zuzu","Arlo","Benny","Cinnamon","Dottie","Eddie","Freja","Gatsby","Harper","Isla","Jax","Kiki Mae","Lottie","Monty","Nell","Opal","Percy","Quilla","Rosie","Simba","Truffle","Umi","Vesper"];
-let recent = JSON.parse(localStorage.getItem("recentNames")||"[]");
-const nameText=document.getElementById("nameText");
-const nameCard=document.getElementById("nameCard");
-const recentEl=document.getElementById("recent");
-const recentCount=document.getElementById("recentCount");
-const generateBtn=document.getElementById("generateBtn");
-const copyBtn=document.getElementById("copyBtn");
-const clearBtn=document.getElementById("clearRecent");
-function updateRecentDisplay(){
-  recentEl.innerHTML="";
-  if(recent.length===0){recentEl.innerHTML='<div class="muted">No recent picks — generate one!</div>'}
-  recent.forEach(n=>{
-    const div=document.createElement("div");
-    div.className="recent-item";
-    div.textContent=n;
-    recentEl.appendChild(div);
-  });
-  recentCount.textContent=recent.length;
-}
-function addRecent(name){
-  recent.unshift(name);
-  if(recent.length>7)recent.pop();
-  localStorage.setItem("recentNames",JSON.stringify(recent));
-  updateRecentDisplay();
-}
-function generateName(){
-  const idx=Math.floor(Math.random()*names.length);
-  const name=names[idx];
-  nameText.textContent=name;
-  addRecent(name);
-}
-generateBtn.addEventListener("click",generateName);
-copyBtn.addEventListener("click",()=>{navigator.clipboard.writeText(nameText.textContent)});
-clearBtn.addEventListener("click",()=>{recent=[];localStorage.setItem("recentNames","[]");updateRecentDisplay()});
-updateRecentDisplay();
+const NAMES=["Pretzel","Noodle","Sausage","Wiggles","Fritz","Gretel","Oscar","Bella","Lady Wigglebottom","Duchess","Baron","Hans","Greta","Milo","Lola","Kaiser","Bratwurst","Pip","Schnitzel","Bark Twain","Pickles","Snickers","Dapper","Poppy","Mabel","Rex","Otto","Heidi","Liesl","Penny","Frankie","Max","Lucy","Charlie","Winston","Daisy","Maggie","Ziggy","Nixon","Bean","Biscuit","Bruno","Coco","Fable","Gizmo","Hazel","Ike","Juno","Kiki","Lenny","Mochi","Nico","Olive","Peanut","Queenie","Rufus","Sable","Toby","Uma","Violet","Walter","Xena","Yoshi","Zelda","Churro","Maple","Sparky","Button","Clover","Dobby","Elvis","Fiona","Gus","Hector","Ivan","Jasper","Koda","Leia","Mira","Nova","Ollie","Poppyseed","Quincy","Ranger","Sarge","Tango","Ulysses","Vera","Whiskey","Xander","Yara","Zeppelin","Alfie","Bubbles","Chewie","Drogo","Echo","Felix","Ginger","Hugo","Indie","Juniper","Kelp","Lulu","Miso","Nori","Orzo","Pico","Rexie","Sableton","Tilly","Uno","Vito","Waffle","Xavi","Yogi","Zuzu","Arlo","Benny","Cinnamon","Dottie","Eddie","Freja","Gatsby","Harper","Isla","Jax","Kiki Mae","Lottie","Monty","Nell","Opal","Percy","Quilla","Rosie","Simba","Truffle","Umi","Vesper"];
+const STORAGE_KEY="dachshund_big_recent";const MAX_RECENT=7;
+const nameText=document.getElementById("nameText"),recentEl=document.getElementById("recent"),recentCount=document.getElementById("recentCount");
+let recent=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+function pickRandom(){return NAMES[Math.floor(Math.random()*NAMES.length)]}
+function showName(n,a=true){if(!n)return;nameText.textContent=n;if(a){recent=recent.filter(x=>x!==n);recent.unshift(n);if(recent.length>MAX_RECENT)recent=recent.slice(0,MAX_RECENT);localStorage.setItem(STORAGE_KEY,JSON.stringify(recent));renderRecent()}}
+function renderRecent(){recentEl.innerHTML="";if(!recent.length){recentEl.innerHTML='<div class="muted">No recent picks — generate one!</div>';recentCount.textContent=0;return}
+recent.forEach(n=>{const d=document.createElement("div");d.className="recent-item";d.innerHTML=`<div style='font-weight:700'>${n}</div><button class='btn copy small'>Copy</button>`;d.querySelector("button").onclick=()=>navigator.clipboard.writeText(n);d.querySelector("div").onclick=()=>showName(n,false);recentEl.appendChild(d)});recentCount.textContent=recent.length}
+document.getElementById("generateBtn").onclick=()=>showName(pickRandom());
+document.getElementById("surpriseBtn").onclick=()=>showName(pickRandom());
+document.getElementById("shuffleBtn").onclick=()=>{let i=6;const t=setInterval(()=>{nameText.textContent=pickRandom();if(!i--){clearInterval(t);showName(pickRandom())}},120)};
+document.getElementById("copyBtn").onclick=()=>navigator.clipboard.writeText(nameText.textContent);
+document.getElementById("clearRecent").onclick=()=>{recent=[];localStorage.removeItem(STORAGE_KEY);renderRecent()};
+document.getElementById("exportRecent").onclick=()=>{const b=new Blob([JSON.stringify(recent)],{type:"application/json"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="recent-names.json";a.click();URL.revokeObjectURL(u)};
 document.getElementById("year").textContent=new Date().getFullYear();
+renderRecent();
 </script>
 </body>
 </html>
